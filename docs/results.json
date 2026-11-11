@@ -1,0 +1,78 @@
+{
+  "fleet": {
+    "vehicles": 60,
+    "days": 60,
+    "samples": 178808,
+    "trips": 3102,
+    "failing_vehicles": 30
+  },
+  "ablation": [
+    {
+      "features": "Raw trip statistics",
+      "macro_f1": 0.681,
+      "macro_f1_std": 0.042,
+      "alarm_pr_auc": 0.732,
+      "alarm_pr_auc_std": 0.085
+    },
+    {
+      "features": "+ Physics (RLS) parameters",
+      "macro_f1": 0.875,
+      "macro_f1_std": 0.095,
+      "alarm_pr_auc": 0.916,
+      "alarm_pr_auc_std": 0.046
+    },
+    {
+      "features": "+ Vehicle baseline & trend",
+      "macro_f1": 0.908,
+      "macro_f1_std": 0.027,
+      "alarm_pr_auc": 0.955,
+      "alarm_pr_auc_std": 0.02
+    }
+  ],
+  "alarm": {
+    "trip_false_alarm_budget": 0.01,
+    "failing_vehicles_warned_ge_1_day": "30/30",
+    "median_lead_days": 8.0,
+    "healthy_vehicles_with_false_alarm": "3/30",
+    "failing_vehicles_with_alarm_before_onset": "1/30"
+  },
+  "confusion_matrix": {
+    "labels": [
+      "healthy",
+      "battery",
+      "bearing",
+      "cooling"
+    ],
+    "counts": [
+      [
+        2830,
+        16,
+        8,
+        8
+      ],
+      [
+        11,
+        85,
+        0,
+        0
+      ],
+      [
+        8,
+        0,
+        72,
+        0
+      ],
+      [
+        8,
+        0,
+        0,
+        56
+      ]
+    ]
+  },
+  "timings_s": {
+    "simulate_s": 4.61,
+    "extract_s": 2.12,
+    "train_eval_s": 61.97
+  }
+}
